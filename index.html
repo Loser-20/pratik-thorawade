@@ -3,404 +3,238 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pratik Thorawade — Network Engineer | Cloud | Python</title>
-  <meta name="description" content="Personal site of Pratik Thorawade — Network Engineer (Cisco Meraki, IPSec), Cloud Networking (Azure VNet, AWS VPC), Python automation, and projects." />
-  <meta property="og:title" content="Pratik Thorawade — Network Engineer | Cloud | Python" />
-  <meta property="og:description" content="Cisco Meraki · IPSec · Azure VNet · AWS VPC · Python · Projects & notes" />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='64' width='64'%3E%3Ctext y='56' x='6' font-size='56'%3E⚡%3C/text%3E%3C/svg%3E" />
-  <style>
-    :root{
-      --bg: #0b1020;
-      --surface: rgba(255,255,255,0.06);
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --brand: #0ea5e9;
-      --accent: #22d3ee;
-      --success:#10b981;
-      --warn:#f59e0b;
-      --danger:#ef4444;
-      --shadow: 0 10px 30px rgba(2,8,23,.35);
-      --radius: 16px;
-      --glass: blur(8px) saturate(120%);
-    }
-    [data-theme="light"]{
-      --bg: #f7fafc;
-      --surface: rgba(15,23,42,0.06);
-      --text: #0f172a;
-      --muted: #475569;
-      --brand: #2563eb;
-      --accent: #06b6d4;
-      --shadow: 0 10px 24px rgba(2,8,23,.08);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 10% -20%, #0ea5e920 0%, transparent 60%),
-                  radial-gradient(900px 500px at 110% 10%, #22d3ee22 0%, transparent 55%), var(--bg);
-      color: var(--text);
-      line-height:1.6;
-    }
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    /* Layout */
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:relative;padding-top:48px}
-    nav{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      backdrop-filter:var(--glass); background:var(--surface); padding:10px 14px; border-radius:14px;
-      position:sticky; top:12px; z-index:50; box-shadow:var(--shadow);
-    }
-    .nav-left{display:flex;align-items:center;gap:12px}
-    .brand{
-      display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px;color:var(--text)
-    }
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px var(--brand)}
-    .nav-links{display:flex; gap:14px; flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;
-      padding:10px 14px;border-radius:12px;background:linear-gradient(180deg,var(--brand),#0284c7);
-      color:white;font-weight:600;box-shadow:var(--shadow)
-    }
-    .btn.ghost{background:transparent;border-color:color-mix(in oklab, var(--brand) 40%, transparent)}
-    .btn.icon{padding:8px 10px; border-radius:10px}
-    .btn:hover{filter:brightness(1.08);text-decoration:none}
-
-    /* Hero */
-    .hero{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:28px
-    }
-    .card{
-      background:var(--surface); border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius); padding:22px; backdrop-filter:var(--glass); box-shadow:var(--shadow)
-    }
-    .title{font-size:clamp(28px, 4vw, 44px);line-height:1.1;margin:0 0 8px}
-    .subtitle{font-size:clamp(14px,1.8vw,18px);color:var(--muted);margin:0 0 18px}
-    .roles{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
-    .chip{
-      padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, #11182766, transparent);
-      border:1px dashed color-mix(in oklab, var(--brand) 35%, transparent); color:var(--text); font-weight:600
-    }
-    .socials{display:flex;gap:10px;flex-wrap:wrap}
-    .avatar{
-      width:100%; aspect-ratio:1/1; border-radius:18px; overflow:hidden; position:relative
-    }
-    .avatar img{width:100%; height:100%; object-fit:cover; filter:saturate(1.05) contrast(1.02)}
-    .glow{
-      position:absolute; inset:-2px; border-radius:22px; 
-      background: conic-gradient(from 180deg, #22d3ee55, transparent, #0ea5e955, transparent);
-      filter: blur(18px); z-index:-1; animation: spin 14s linear infinite
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    /* Sections */
-    section{scroll-margin-top:86px}
-    h2{font-size:28px;margin:0 0 12px}
-    .muted{color:var(--muted)}
-    .grid{display:grid; gap:18px}
-    .grid.skills{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-    .skill{display:flex;align-items:flex-start;gap:12px}
-    .skill b{display:block}
-    .timeline{border-left:2px dashed color-mix(in oklab, var(--brand) 40%, transparent); padding-left:14px}
-    .timeline .item{margin-bottom:14px}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
-    .repo{position:relative}
-    .repo h3{margin:0 0 8px; font-size:18px}
-    .tag{display:inline-block; padding:4px 8px; border-radius:999px; background:rgba(94,234,212,.15); color:#5eead4; border:1px solid rgba(94,234,212,.35); font-size:12px; margin-right:6px}
-
-    /* Footer */
-    footer{margin:28px 0 16px; text-align:center; color:var(--muted); font-size:14px}
-
-    /* Animations */
-    .reveal{opacity:0; transform:translateY(16px); transition: all .6s cubic-bezier(.2,.8,.2,1)}
-    .reveal.visible{opacity:1; transform:none}
-
-    /* Mobile */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-    }
-  </style>
+  <title>Shobha Enterprise | Agricultural Hand Tools & Farm Equipment</title>
+  <meta name="description" content="Shobha Enterprise supplies reliable agricultural hand tools and farming equipment. Based in Satara MIDC, Maharashtra.">
+  https://fonts.googleapis.com
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap
+  styles.css
+  assets/logo.png
 </head>
+
 <body>
-  <div class="wrap">
-    <nav class="card">
-      <div class="nav-left">
-        <div class="brand"><span class="dot"></span> <span>Pratik&nbsp;Thorawade</span></div>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#leetcode">LeetCode</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-      <div class="nav-right">
-        <button id="themeBtn" class="btn ghost icon" title="Toggle theme">🌓</button>
-        <a class="btn" href="#contact">Hire me</a>
-      </div>
-    </nav>
-
-    <!-- HERO -->
-    <header>
-      <div class="hero">
-        <div class="card reveal">
-          <h1 class="title">Namaste, I'm Pratik 👋</h1>
-          <p class="subtitle" id="greet">Network Engineer & Cloud‑first problem solver.</p>
-          <div class="roles" id="roles">
-            <!-- chips inserted by JS -->
-          </div>
-          <div class="socials">
-            <a class="btn ghost" href="https://github.com/Loser-20" target="_blank" rel="noopener">GitHub: Loser-20</a>
-            <a class="btn ghost" href="https://github.com/Pratik-20" target="_blank" rel="noopener">GitHub: Pratik-20</a>
-            <a class="btn ghost" href="https://in.linkedin.com/in/pratik20" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn ghost" href="mailto:pratikthorawade20@gmail.com">Email</a>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="avatar card">
-            <div class="glow"></div>
-            <!-- If you prefer, replace with a hosted headshot -->
-            <img alt="Pratik Thorawade" src="https://avatars.githubusercontent.com/u/86850437?v=4" />
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about" class="reveal" style="margin-top:22px">
-      <div class="card">
-        <h2>About</h2>
-        <p class="muted">
-          I work on enterprise networks and secure connectivity—especially across
-          <b>Cisco Meraki (MX/MS/MR/MV)</b>, <b>IPSec VPNs</b>, and <b>Azure VNet</b>/<b>AWS VPC</b> designs. I like
-          building reliable infra and automating routine tasks with <b>Python</b>.
-        </p>
-        <p class="muted" style="margin-top:6px">
-          Currently at <b>Capgemini (India)</b>, focused on SD‑WAN rollouts, branch network onboarding,
-          and site‑to‑site security baselines. Off the clock, I explore Arduino/Robotics and keep sharpening DSA on LeetCode.
-        </p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="reveal" style="margin-top:18px">
-      <div class="card">
-        <h2>Skills</h2>
-        <div class="grid skills" id="skillsGrid"></div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="reveal" style="margin-top:18px">
-      <div class="card">
-        <h2>Experience</h2>
-        <div class="timeline" id="timeline"></div>
-      </div>
-    </section>
-
-    <!-- PROJECTS (auto from GitHub) -->
-    <section id="projects" class="reveal" style="margin-top:18px">
-      <div class="card">
-        <h2>Projects</h2>
-        <p class="muted">Latest repositories from my GitHub accounts (auto‑fetched). Click any card to view.</p>
-        <div class="cards" id="repos">
-          <!-- populated by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- LEETCODE -->
-    <section id="leetcode" class="reveal" style="margin-top:18px">
-      <div class="card">
-        <h2>LeetCode</h2>
-        <div style="display:grid; grid-template-columns:1fr auto; gap:12px; align-items:start">
-          <div>
-            <p class="muted">Snapshot of my LeetCode practice (editable for quick updates).</p>
-            <ul id="lcList">
-              <!-- populated by JS -->
-            </ul>
-          </div>
-          <div>
-            <button class="btn ghost" id="editLc">Edit</button>
-            <a class="btn" target="_blank" rel="noopener" href="https://leetcode.com/u/Pratikt20/">View Profile</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="reveal" style="margin-top:18px">
-      <div class="card">
-        <h2>Contact</h2>
-        <p class="muted">Open to conversations on network design, Meraki SD‑WAN, secure connectivity, and cloud networking.</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap">
-          <a class="btn" href="mailto:pratikthorawade20@gmail.com">Email me</a>
-          <a class="btn ghost" href="https://in.linkedin.com/in/pratik20" target="_blank" rel="noopener">DM on LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
-    <footer>© <span id="year"></span> Pratik Thorawade • Built with ❤️</footer>
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <span>Satara MIDC, Maharashtra</span>
+      <span>|</span>
+      tel:+910000000000+91 00000 00000</a>
+      <span>•</span>
+      mailto:info@shobhaenterprise.ininfo@shobhaenterprise.in</a>
+    </div>
   </div>
 
+  <!-- Header / Nav -->
+  <header class="header">
+    <div class="container nav">
+      #
+        assets/logo.png
+        <span>Shobha Enterprise</span>
+      </a>
+
+      <!-- CSS-only mobile nav (checkbox hack) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-hidden="true">&#9776;</label>
+
+      <nav class="menu">
+        #homeHome</a>
+        #productsProducts</a>
+        #aboutAbout</a>
+        #contactContact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <h1>Quality Agricultural Hand Tools & Equipment</h1>
+      <p>Supplying durable, field‑tested tools for farms, orchards, and nurseries. Trusted by growers across Maharashtra.</p>
+      <div class="hero-cta">
+        #productsExplore Products</a>
+        #contactGet a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="highlights">
+    <div class="container grid-3">
+      <div class="card">
+        <h3>Reliable & Durable</h3>
+        <p>Tools selected for Indian farm conditions—built to last the season and beyond.</p>
+      </div>
+      <div class="card">
+        <h3>Fast Supply</h3>
+        <p>Quick fulfillment from Satara MIDC with flexible pickup and delivery options.</p>
+      </div>
+      <div class="card">
+        <h3>After‑Sales Support</h3>
+        <p>Guidance on tool selection, maintenance tips, and ready spare parts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Products</h2>
+      <p class="section-subtitle">Popular agricultural hand tools and farm essentials</p>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-img placeholder">Pruning Shears</div>
+          <h3>Pruning Shears / Secateurs</h3>
+          <p>High‑carbon steel blades for clean cuts in orchards and vineyards.</p>
+          <span class="badge">Best Seller</span>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">Knapsack Sprayers</div>
+          <h3>Knapsack & Hand Sprayers</h3>
+          <p>Manual and battery sprayers for pesticides, foliar feeds, and sanitation.</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">Hoes</div>
+          <h3>Hoes & Cultivators</h3>
+          <p>Weeding, soil aeration, and inter‑row cultivation tools in multiple sizes.</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">Sickles</div>
+          <h3>Sickles & Grass Cutters</h3>
+          <p>Precision harvesting tools with ergonomic grips for reduced fatigue.</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">Spades</div>
+          <h3>Spades, Shovels & Forks</h3>
+          <p>Heavy‑duty digging tools with reinforced blades and hardwood handles.</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">Irrigation</div>
+          <h3>Irrigation Fittings</h3>
+          <p>Drip lines, connectors, filters, and valves for efficient water management.</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">PPE</div>
+          <h3>Safety & PPE</h3>
+          <p>Gloves, masks, goggles, and aprons for safe handling of agro‑chemicals.</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img placeholder">Spare Parts</div>
+          <h3>Spare Parts & Accessories</h3>
+          <p>Nozzles, hoses, blades, and repair kits for quick maintenance.</p>
+          <span class="badge badge-alt">New</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section alt">
+    <div class="container">
+      <h2 class="section-title">About Shobha Enterprise</h2>
+      <div class="about-grid">
+        <div>
+          <p>We are a Satara MIDC‑based supplier of agricultural hand tools and farm equipment. Our focus is on dependable quality, fair pricing, and consistent availability to support farms, orchards, and nurseries across the region.</p>
+          <p>From pruning tools to irrigation fittings, we help you choose the right equipment for your crops, terrain, and budget—backed by quick service and after‑sales support.</p>
+          <ul class="checks">
+            <li>Curated brands and field‑tested quality</li>
+            <li>Wholesale & retail supply</li>
+            <li>Bulk ordering and institutional procurement</li>
+            <li>Local delivery & pickup at Satara MIDC</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>Business Hours</h3>
+          <p>Mon–Sat: 9:30 AM – 7:00 PM<br>Sun: Closed</p>
+          <h3 style="margin-top:1rem;">GST / Regn</h3>
+          <p>GSTIN: <em>Update here</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">We’ll get back within 1 business day</p>
+
+      <div class="contact-grid">
+        #
+          <!-- Static site: no backend. Integrate with form tools (e.g., Netlify Forms) if needed. -->
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your name" required>
+          </label>
+          <label>
+            <span>Phone</span>
+            <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com">
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="Tell us what you need..."></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary" disabled title="Static demo only">Send (Demo)</button>
+          <small class="muted">Note: Form disabled for static demo. We can hook this to email/Netlify on deployment.</small>
+        </form>
+
+        <div class="contact-card">
+          <h3>Visit Us</h3>
+          <p><strong>Shobha Enterprise</strong><br>Satara MIDC, Maharashtra<br>PIN: 415 004 (update if needed)</p>
+          <p><strong>Phone:</strong> tel:+910000000000+91 00000 00000</a><br>
+             <strong>Email:</strong> mailto:info@shobhaenterprise.ininfo@shobhaenterprise.in</a></p>
+          <div class="map">
+            <!-- Update place once exact address is known -->
+            https://www.google.com/maps?q=Satara%20MIDC&output=embed
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Shobha Enterprise</strong>
+        <p class="muted">Agricultural hand tools & farm equipment supplier in Satara MIDC.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="links">
+          <li>#productsProducts</a></li>
+          <li>#aboutAbout</a></li>
+          <li>#contactContact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul class="links">
+          <li>#Facebook</a></li>
+          <li>#Instagram</a></li>
+          <li>#WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">
+      <span>© <span id="year"></span> Shobha Enterprise. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Tiny inline script only to set current year; remove if you want zero JS -->
   <script>
-    /* ---------- Data (edit here if needed) ---------- */
-    const PROFILE = {
-      name: "Pratik Thorawade",
-      email: "pratikthorawade20@gmail.com",
-      locationTZ: "Asia/Kolkata",
-      roles: [
-        "Network Engineer",
-        "Cisco Meraki (MX/MS/MR/MV)",
-        "IPSec & VPN",
-        "Azure VNet • AWS VPC",
-        "Python Automation"
-      ],
-      skills: [
-        {title:"Enterprise Networking", items:["Cisco Meraki: MX, MS, MR, MV","SD‑WAN","LAN/WAN","HA & Branch rollouts"]},
-        {title:"Security", items:["IPSec tunnels","Site‑to‑Site VPN","WPA3","Segmentation"]},
-        {title:"Cloud Networking", items:["Azure VNet, DNS, NAT Gateway","Azure Site‑to‑Site","AWS VPC","Hybrid connectivity"]},
-        {title:"Automation", items:["Python","Meraki APIs","Scripting","Infra as Code (learning Terraform)"]},
-        {title:"Tooling", items:["Wireshark","GNS3/Packet Tracer","ITSM & CMDB","Monitoring & NOC"]},
-        {title:"Side Interests", items:["Arduino/Robotics","Machine Learning basics","LeetCode DSA"]}
-      ],
-      experience: [
-        {org:"Capgemini (India)", role:"Network/Software Engineer", period:"2023 — Present", details:[
-          "Meraki SD‑WAN across multi‑branch environments",
-          "Branch onboarding: MX/MS/MR deployments & RF optimization",
-          "Python + APIs for reporting and routine tasks"
-        ]},
-        {org:"Skyoffsite", role:"Junior Engineer", period:"2022 — 2023", details:["Infra support & field implementation exposure"]}
-      ],
-      githubUsers: ["Loser-20","Pratik-20"],
-      featuredReposFallback: [
-        {name:"Arduino", desc:"Arduino sketches: sensors, robotics, pick‑and‑place, fingerprint attendance", url:"https://github.com/Pratik-20/Arduino"},
-        {name:"LeetCode", desc:"My LeetCode solutions across Python/C++/SQL/Bash", url:"https://github.com/Pratik-20/LeetCode"},
-        {name:"Control-M", desc:"Notes & starters for Control‑M workflow orchestration", url:"https://github.com/Pratik-20/Control-M"}
-      ],
-      leetcode: {
-        username: "Pratikt20",
-        langs: [
-          {name:"Python3", solved:86},
-          {name:"C++", solved:11},
-          {name:"MySQL", solved:8}
-        ],
-        contest: {rating:1410, note:"Best as of Apr 2023"},
-        rankNote: "Snapshot from public profile (may change)."
-      }
-    };
-
-    /* ---------- Theme ---------- */
-    const themeBtn = document.getElementById('themeBtn');
-    function setTheme(t){ document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme',t); }
-    setTheme(localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light':'dark'));
-    themeBtn.addEventListener('click', ()=> setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));
-
-    /* ---------- Greeting & Roles ---------- */
-    const greet = document.getElementById('greet');
-    function hello(){
-      try{
-        const tz = PROFILE.locationTZ || 'Asia/Kolkata';
-        const hour = new Date().toLocaleString('en-US',{hour:'numeric',hour12:false,timeZone:tz});
-        const h = parseInt(hour,10);
-        greet.textContent = (h<12 ? "Good morning" : h<18 ? "Good afternoon" : "Good evening") + " — building reliable networks.";
-      }catch{ /* fallback */ }
-    }
-    hello();
-
-    const rolesEl = document.getElementById('roles');
-    PROFILE.roles.forEach((r,i)=>{
-      const span = document.createElement('span'); span.className='chip'; span.textContent = r;
-      rolesEl.appendChild(span);
-    });
-
-    /* ---------- Skills ---------- */
-    const skillsGrid = document.getElementById('skillsGrid');
-    PROFILE.skills.forEach(s=>{
-      const el = document.createElement('div'); el.className='skill';
-      el.innerHTML = `<div style="font-size:20px">✅</div><div><b>${s.title}</b><div class="muted">${s.items.join(" · ")}</div></div>`;
-      skillsGrid.appendChild(el);
-    });
-
-    /* ---------- Experience ---------- */
-    const timeline = document.getElementById('timeline');
-    PROFILE.experience.forEach(e=>{
-      const item = document.createElement('div'); item.className='item';
-      item.innerHTML = `<div><b>${e.role}</b> — ${e.org} <span class="muted">(${e.period})</span></div>
-                        <ul style="margin:6px 0 0 16px">${e.details.map(d=>`<li>${d}</li>`).join("")}</ul>`;
-      timeline.appendChild(item);
-    });
-
-    /* ---------- GitHub Projects (auto-fetch) ---------- */
-    const reposEl = document.getElementById('repos');
-    async function fetchAllRepos(users){
-      const headers = {'Accept':'application/vnd.github+json'};
-      const lists = await Promise.all(users.map(u => 
-        fetch(`https://api.github.com/users/${u}/repos?per_page=100&sort=updated`,{headers}).then(r=>r.ok?r.json():[])
-      ));
-      return lists.flat().filter(r=>!r.fork);
-    }
-    function repoCard(r){
-      const lang = r.language ? `<span class="tag">${r.language}</span>` : "";
-      const meta = `<span class="tag">★ ${r.stargazers_count||0}</span><span class="tag">⬇ ${r.forks_count||0}</span>`;
-      const desc = r.description ? r.description : "—";
-      const topics = (r.topics||[]).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join("");
-      return `<a class="card repo" href="${r.html_url}" target="_blank" rel="noopener">
-        <h3>${r.name}</h3>
-        <div class="muted" style="min-height:44px">${desc}</div>
-        <div style="margin-top:10px">${lang}${topics}${meta}</div>
-      </a>`;
-    }
-    function renderFallback(){
-      PROFILE.featuredReposFallback.forEach(fr=>{
-        const div = document.createElement('div'); div.innerHTML =
-          `<a class="card repo" href="${fr.url}" target="_blank" rel="noopener">
-            <h3>${fr.name}</h3><div class="muted">${fr.desc}</div>
-            <div style="margin-top:10px"><span class="tag">Pinned</span></div>
-          </a>`;
-        reposEl.appendChild(div.firstChild);
-      });
-    }
-    (async ()=>{
-      try{
-        const repos = await fetchAllRepos(PROFILE.githubUsers);
-        const scored = repos.map(r=>{
-          const score = (r.stargazers_count||0)*2 + (r.forks_count||0) + (new Date() - new Date(r.pushed_at))/ -86400000;
-          return {score, r};
-        }).sort((a,b)=>b.score-a.score).slice(0,8).map(x=>x.r);
-        if(scored.length===0) renderFallback();
-        else reposEl.innerHTML = scored.map(repoCard).join("");
-      }catch(e){ renderFallback(); }
-    })();
-
-    /* ---------- LeetCode (editable snapshot) ---------- */
-    const lcList = document.getElementById('lcList');
-    function renderLC(){
-      lcList.innerHTML = `
-        <li><b>User:</b> ${PROFILE.leetcode.username}</li>
-        <li><b>Languages solved:</b> ${PROFILE.leetcode.langs.map(l => `${l.name} (${l.solved})`).join(", ")}</li>
-        <li><b>Contest rating:</b> ${PROFILE.leetcode.contest.rating} <span class="muted">(${PROFILE.leetcode.contest.note})</span></li>
-        <li class="muted">${PROFILE.leetcode.rankNote}</li>
-      `;
-    }
-    renderLC();
-    document.getElementById('editLc').addEventListener('click', ()=>{
-      const u = prompt("LeetCode username:", PROFILE.leetcode.username || "");
-      if(u!==null){ PROFILE.leetcode.username = u; renderLC(); }
-    });
-
-    /* ---------- Scroll reveal ---------- */
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=> e.target.classList.toggle('visible', e.isIntersecting));
-    }, {threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
-    /* ---------- Footer year ---------- */
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
